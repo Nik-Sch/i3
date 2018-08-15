@@ -135,6 +135,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+Control+r exec "cd ~/.config/i3status && git pull && i3-msg restart"
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -189,8 +192,16 @@ bindsym $mod+Escape mode "$mode_system"
 # finds out, if available)
 bar {
     # python extension for playerctl add on
-    status_command i3status | ~/.config/i3status/my_i3status.py 2>> ~/.config/i3status/stderr.log
-    # status_command i3status
+    status_command i3status | ~/.config/i3status/my_i3status.py 2>> ~/.config/i3status/stderr_dp-0.log
+    output DisplayPort-0
+    font pango:DejaVu Sans Mono 9
+}
+
+bar {
+    # python extension for playerctl add on
+    status_command i3status | ~/.config/i3status/my_i3status.py 2>> ~/.config/i3status/stderr_hdmi-a-0.log
+    output HDMI-A-0
+    font pango:DejaVu Sans Mono 11
 }
 
 # display setup
